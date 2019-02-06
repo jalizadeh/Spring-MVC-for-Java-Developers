@@ -12,4 +12,7 @@
 - HTML, JavaScript, XML
 
 ## Spring MVC Java Configuration
-- project `Spring MVC Foundation` is configured
+- [3] Project `Spring MVC Foundation` is configured
+- [4] Logging dependencies added
+- [5] `AppInitializer` & `WebConfig` is done.
+	> Go to `http://localhost:8080/spring-mvc-foundation/main/` to see the message. The 1st webapp is done :)
