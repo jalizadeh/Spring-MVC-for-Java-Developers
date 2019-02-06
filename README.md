@@ -11,3 +11,5 @@
 - Spring Core
 - HTML, JavaScript, XML
 
+## Spring MVC Java Configuration
+- project `Spring MVC Foundation` is configured
