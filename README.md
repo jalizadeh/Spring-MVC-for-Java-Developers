@@ -25,3 +25,8 @@
 	- `WebConfig` manages how to load `jsp` pages
 	- `hello.jsp` holds the beautified `${message}`
 	- `MainController` will send the message as `message`
+
+## Boot Configuration
+- [2] Boot Basics
+	- Project `spring-mvc-boot` is configured. It is a `Spring Starter Project`
+	- To see the message, go to `http://localhost:8080/main/`
