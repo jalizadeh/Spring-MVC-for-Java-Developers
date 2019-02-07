@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc 
 //look into this package for annotated files 
 // & convert them to Beans in IOC Container
-@ComponentScan("com.oreilly.mvc")
+@ComponentScan("com.oreilly.mvc.controllers")
 public class WebConfig {
 	
 }

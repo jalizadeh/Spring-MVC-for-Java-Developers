@@ -4,10 +4,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 public class DispatcherInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	//Establish root application context, for global beans & services,
+	// that may be shared across the application
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Class[] {RootConfig.class};
 	}
 
 	//indicate the config classes
@@ -19,7 +20,7 @@ public class DispatcherInitializer extends AbstractAnnotationConfigDispatcherSer
 	//indicate the mappings
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"/s"};
+		return new String[] {"/"};
 	}
 
 }
