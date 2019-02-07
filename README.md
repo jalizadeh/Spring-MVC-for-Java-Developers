@@ -21,3 +21,7 @@
 - [7] Context Heirarchies
 	- `RootConfig` is added
 	- Sub-packages `services` & `controllers` were added
+- [8] View Resolution Configuration
+	- `WebConfig` manages how to load `jsp` pages
+	- `hello.jsp` holds the beautified `${message}`
+	- `MainController` will send the message as `message`
