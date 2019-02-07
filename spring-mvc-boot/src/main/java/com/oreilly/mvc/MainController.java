@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/main")
 public class MainController {
 	
-	@ResponseBody
+	//@ResponseBody
 	@RequestMapping("/")
 	public String greeting() {
-		return "Hello World by SpringBoot";
+		//return "Hello World by SpringBoot";
+		
+		//it will load hello.html from `templates` automatically
+		return "hello";
 	}
 }

@@ -38,3 +38,9 @@
 		server.servlet.context-path=/simple
 		logging.level.root=debug
 		```
+	- To see the message, go to `http://localhost:9090/simple/main/`
+	
+
+- [4] Thymeleaf Template Engine
+	- It will load the `.html` files in `/spring-mvc-boot/src/main/resources/templates`
+	- `application.properties` is reset to empty
