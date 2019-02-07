@@ -14,10 +14,10 @@
 ## Spring MVC Java Configuration
 - [3] Project `Spring MVC Foundation` is configured
 - [4] Logging dependencies added
-- [5] `AppInitializer` & `WebConfig` is done.\
-	Go to `http://localhost:8080/spring-mvc-foundation/main/` to see the message. The 1st webapp is done :)
-- [6] `DispatcherInitializer` is used instead of `AppInitializer`\
-	It is faster to configure & needs less to code
+- [5] `AppInitializer` & `WebConfig` is done.
+	- Go to `http://localhost:8080/spring-mvc-foundation/main/` to see the message. The 1st webapp is done :)
+- [6] `DispatcherInitializer` is used instead of `AppInitializer`
+	- It is faster to configure & needs less to code
 - [7] Context Heirarchies
 	- `RootConfig` is added
 	- Sub-packages `services` & `controllers` were added
@@ -30,3 +30,11 @@
 - [2] Boot Basics
 	- Project `spring-mvc-boot` is configured. It is a `Spring Starter Project`
 	- To see the message, go to `http://localhost:8080/main/`
+
+- [3] Configuration Overrides
+	- `/spring-mvc-boot/src/main/resources/application.properties` is used for overriding my own configurations
+		```
+		server.port=9090
+		server.servlet.context-path=/simple
+		logging.level.root=debug
+		```
