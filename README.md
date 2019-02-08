@@ -39,8 +39,31 @@
 		logging.level.root=debug
 		```
 	- To see the message, go to `http://localhost:9090/simple/main/`
-	
+
 
 - [4] Thymeleaf Template Engine
 	- It will load the `.html` files in `/spring-mvc-boot/src/main/resources/templates`
 	- `application.properties` is reset to empty
+
+- [5] WAR Packaging
+	- Open `pom.xml`
+		- Change to `<packaging>jar</packaging>` to `<packaging>war</packaging>`
+		- Copy dependency `spring-boot-starter-web` and change it to:
+			```
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
+				<scope>provided</scope>
+			</dependency>
+			```
+	- `SpringMvcBootApplication`
+		- change it to:
+			```java
+			public class SpringMvcBootApplication extends SpringBootServletInitializer{
+			```
+	- Go to `Windows > Preferences > Java > Installed JREs > Execution Environment`
+		- Select `JavaSE-1.8`, then check `jre1.8.0_XXX [perfecr match]`
+	- Stop any server that is running
+	- Right click on `pom.xml`, Select `Run As > Maven Build...` (the second item)
+		- In `Goals`, enter `package`, then click `Run`
+	- `war` file is available in `project/target/`
