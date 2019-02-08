@@ -75,3 +75,7 @@
 - [3] Handling Requests with Controllers
 	- `ProjectController` implemented
 	- Go to `http://localhost:8080/project/add`
+- [4] Establishing Request Mappings
+	- Different type of parameters in `POST` can be handled by mixing them
+	- `project_add.jsp` changed
+	- Action added to form in `project_add.jsp`
