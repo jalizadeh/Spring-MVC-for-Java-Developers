@@ -1,8 +1,10 @@
 package com.oreilly.mvc.data.services;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -41,7 +43,17 @@ public class ProjectService {
 		Project p = new Project();
 		p.setName(name);
 		p.setDescription(description);
+		p.setAuthorizedFunds(new BigDecimal("100000"));
+		p.setAuthorizedHours(new BigDecimal("1000"));
+		p.setProjectId(randomId());
+		p.setSpecial(false);
+		p.setType("multi");
+		p.setYear("2015");
 		
 		return p;
+	}
+	
+	private Long randomId() {
+		return Math.abs(new Random().nextLong());
 	}
 }

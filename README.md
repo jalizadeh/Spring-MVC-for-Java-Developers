@@ -99,3 +99,15 @@
 		}
 		```
 	- `Project > find` link in `header.jsp` is fixed
+- [7] Variables in Paths
+	- `project.jsp` is added
+	- Each project is linked to it's page in `projects.jsp`
+	- `ProjectController` will handle the page for selected project
+		```java
+		@RequestMapping(value="/{projectId}")
+		public String findProject(Model model, @PathVariable Long projectId) {
+			model.addAttribute("project", this.projectService.find(projectId));
+			return "project";
+		}
+		```
+	- I set a random ID generated for each project

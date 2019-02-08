@@ -3,6 +3,7 @@ package com.oreilly.mvc.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,6 +16,12 @@ public class ProjectController {
 	
 	@Autowired
 	public ProjectService projectService;
+	
+	@RequestMapping(value="/{projectId}")
+	public String findProject(Model model, @PathVariable Long projectId) {
+		model.addAttribute("project", this.projectService.find(projectId));
+		return "project";
+	}
 	
 	@RequestMapping(value="/find")
 	public String find(Model model) {
