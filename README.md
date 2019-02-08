@@ -79,3 +79,7 @@
 	- Different type of parameters in `POST` can be handled by mixing them
 	- `project_add.jsp` changed
 	- Action added to form in `project_add.jsp`
+- [5] Building Models
+	- Sending a `model` to the `view`
+	- `home.jsp` changed
+	- `com.oreilly.mvc.data.entities.Project` is added
