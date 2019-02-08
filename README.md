@@ -71,3 +71,7 @@
 
 ## Basic Request Processing
 - [2] Project `spring-mvc-project-management` setup is done.
+	- Go to `http://localhost:8080/home/`
+- [3] Handling Requests with Controllers
+	- `ProjectController` implemented
+	- Go to `http://localhost:8080/project/add`
