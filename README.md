@@ -115,3 +115,19 @@
 	- Instead of using `HttpServletRequest request` as [Method Argument](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-methods), `@RequestParam("name") String name` is provided to be easier to get the parameter & cast the type without any other code.
 - [9] Binding Request Data
 	- And now, instead of those mentioned above, by using `@ModelAttribute Project project` as a method's argument, the paramateres' names will match with the names of the parameters in the java object. ALL IN ONE 😍
+
+
+## Spring MVC Tags
+- [2] URL Tag
+	- For having dynamic URLs, we can use URL Tags in web pages. So, if any `Context Root` is changed, the URLs will be updated with the new path.
+		- In `jsp` files, use:
+		```
+		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
+
+		<spring:url value="/resource/save" />
+		```
+		- NEVER use hardcoded URLs
+	- `resource_add.jsp` added
+	- Menu link to `Resource > add` updated
+	- `application.properties` updated
+	- Go to `http://localhost:8080/app/home/`
