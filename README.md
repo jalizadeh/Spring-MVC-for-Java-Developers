@@ -67,3 +67,7 @@
 	- Right click on `pom.xml`, Select `Run As > Maven Build...` (the second item)
 		- In `Goals`, enter `package`, then click `Run`
 	- `war` file is available in `project/target/`
+
+
+## Basic Request Processing
+- [2] Project `spring-mvc-project-management` setup is done.
