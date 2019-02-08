@@ -160,3 +160,24 @@
 
 		<form:input path="name" cssClass="form-control" id="resource-name"/>
 		```
+- [5] Select Tag
+	- Instead of `HTML Select Tag`, we will use `Spring MVC Select Tag`. Note that the `options` must be sent from the server.
+		```html		
+		<select id="resource-type" name="type" class="selectpicker">
+			<option></option>
+			<option value="material">Material</option>
+			<option value="other">Other</option>
+			<option value="staff">Staff</option>
+			<option value="tech">Technical Equipment</option>
+		</select>
+
+		<form:select path="type" items="${typeOptions}" cssClass="selectpicker" id="resource-type"/>
+		```
+
+	- Options are sent from server:
+		```java
+		List<String> options = new LinkedList<>(
+				Arrays.asList(new String[] {"Material", "Staff", "Other", "Equipment"})
+				);
+		model.addAttribute("typeOptions", options);
+		```
