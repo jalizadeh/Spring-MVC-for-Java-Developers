@@ -2,6 +2,7 @@ package com.oreilly.mvc.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oreilly.mvc.data.entities.Resource;
@@ -17,8 +18,8 @@ public class ResourceController {
 	}
 	
 	@RequestMapping("/save")
-	public String save() {
-		System.out.println("Invoked save() in /resource/save");
+	public String save(@ModelAttribute Resource resource) {
+		System.out.println(resource);
 		return "resource_add";
 	}
 }

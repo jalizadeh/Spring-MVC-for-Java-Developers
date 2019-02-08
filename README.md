@@ -49,7 +49,7 @@
 	- Open `pom.xml`
 		- Change to `<packaging>jar</packaging>` to `<packaging>war</packaging>`
 		- Copy dependency `spring-boot-starter-web` and change it to:
-			```
+			```xml
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -153,3 +153,10 @@
 		return "resource_add";
 	}
 	```
+- [4] Input Tag
+	- Instead of `HTML Input Tag`, we will use `Spring MVC Input Tag`
+		```html
+		<input type="text" id="resource-name" class="form-control" name="name" />
+
+		<form:input path="name" cssClass="form-control" id="resource-name"/>
+		```
