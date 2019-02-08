@@ -111,3 +111,5 @@
 		}
 		```
 	- I set a random ID generated for each project
+- [8] Working with Flexible Handler Arguments
+	- Instead of using `HttpServletRequest request` as [Method Argument](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-methods), `@RequestParam("name") String name` is provided to be easier to get the parameter & cast the type without any other code.
