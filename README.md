@@ -119,11 +119,10 @@
 
 ## Spring MVC Tags
 - [2] URL Tag
-	- For having dynamic URLs, we can use URL Tags in web pages. So, if any `Context Root` is changed, the URLs will be updated with the new path.
+	- For having dynamic URLs, we can use URL Tags in web pages. So, if any `Context Root Path` is changed, the URLs will be updated with the new path.
 		- In `jsp` files, use:
-		```
+		```jsp
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
-
 		<spring:url value="/resource/save" />
 		```
 		- NEVER use hardcoded URLs
@@ -131,3 +130,26 @@
 	- Menu link to `Resource > add` updated
 	- `application.properties` updated
 	- Go to `http://localhost:8080/app/home/`
+- [3] Form Tag
+	- Instead of `HTML form`, we can use `Spring MVC Form` which has more parameters to config & some other rules to obey
+		- Define by:
+		```jsp
+		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+		```
+		- NEVER use nested tags in form's parameters
+		```jsp
+		❌ it is wrong
+		<form:form action="<spring:url value="/resource/save"/>" method="POST" modelAttribute="resource">
+
+		✅ it is correct
+		<spring:url value="/resource/save" var="formUrl"/>
+		<form:form action="${formUrl}" method="POST" modelAttribute="resource">
+		```
+	- In the controller's method, the model object must be defined
+	```java
+	@RequestMapping("/add")
+	public String add(Model model) {
+		model.addAttribute("resource",new  Resource());
+		return "resource_add";
+	}
+	```
