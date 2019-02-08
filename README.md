@@ -83,3 +83,19 @@
 	- Sending a `model` to the `view`
 	- `home.jsp` changed
 	- `com.oreilly.mvc.data.entities.Project` is added
+- [6] Autowiring Controller Services
+	- `projects.jsp` added
+	- `com.oreilly.mvc.data.services.ProjectService` added to prepare data
+	- `ProjectController` will give the needed data to view
+		```java
+		@Autowired
+		public ProjectService projectService;
+		
+		@RequestMapping(value="/find")
+		public String find(Model model) {
+			model.addAttribute("projects", this.projectService.findAll());
+			
+			return "projects";
+		}
+		```
+	- `Project > find` link in `header.jsp` is fixed
