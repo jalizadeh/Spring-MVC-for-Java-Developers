@@ -210,7 +210,7 @@
 	- `List<String> pointsOfContact` added to `Project` object
 	- The `path` of each field must be indexed like `path="pointsOfContact[0]"`
 - [4] Working with ModelAttributes
-	- In a controller, `@ModelAttribute` annotated methods will be handled first, befor `@RequestMapping("path...")` annotated methods. Therefore, we can setup any needed data before the page fields are generated. Otherwise (as we did so far), if a form is POSTed, after page is refreshed, the `select` field, will be empty.
+	- In a controller, `@ModelAttribute` annotated methods will be handled first, before `@RequestMapping("path...")` annotated methods. Therefore, we can setup any needed data before the page fields are generated. Otherwise (as we did so far), if a form is POSTed, after page is refreshed, the `select` field, will be empty.
 		- Before:
 		```java
 		@RequestMapping("/add")
@@ -242,4 +242,11 @@
 		public List<String> getTypes(){
 			return new LinkedList<>(Arrays.asList(new String[] {"Material", "Staff", "Other", Equipment"}));
 		}
+		```
+- [5] Working with SessionAttributes
+	- What if we need to send a model to another page, or even edit it? In this case, we need `Session`. As long as the session is up, it will hold the model for further use.
+	- NOTE:
+		- The model name used for holding data, must be used in session too.
+		```java
+		@SessionAttributes("resource")
 		```
