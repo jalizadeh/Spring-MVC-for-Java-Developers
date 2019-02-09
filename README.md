@@ -194,3 +194,8 @@
 		return "redirect:/resource/add";
 		```
 		otherwise, there will be ['items' must not be null](https://stackoverflow.com/questions/24428930/spring-form-validation-error-java-lang-illegalargumentexception-items-must-n)
+- [7] Textarea Tag
+	- Instead of `HTML TextArea Tag`, we will use `Spring MVC TextArea Tag`.
+	```html
+	<form:textarea path="notes" cssClass="form-control" rows="3"/>
+	```

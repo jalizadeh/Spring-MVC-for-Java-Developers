@@ -48,12 +48,16 @@
 				<div class="form-group">
 					<label for="unitOfMeasure">Unit of Measure</label>
 					<form:radiobuttons path="unitOfMeasure"  items="${radioOptions}"/>
-					
 				</div>
 				
 				<div class="form-group">
 					<label for="indicators">Indicators</label>
 					<form:checkboxes path="indicators"  items="${checkOptions}"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="notes">Notes</label>
+					<form:textarea path="notes" cssClass="form-control" rows="3"/>
 				</div>
 				
 				<button type="submit" class="btn btn-default">Submit</button>
