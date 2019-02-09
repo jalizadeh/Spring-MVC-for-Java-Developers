@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,54 +22,58 @@
 	<div class="container">
 		<div class="row">
 		
-			<form action="<spring:url value="/project/add"/>" method="post" class="col-md-8 col-md-offset-2">
-			
+			<spring:url value="/project/add" var="formUrl"/>
+			<form:form action="${formUrl}" modelAttribute="project" 
+					method="POST" cssClass="col-md-8 col-md-offset-2">
+						
 				<div class="form-group">
 					<label for="project-name">Name</label>
-					<input type="text" id="project-name" 
-							class="form-control" name="name"/>
+					<form:input id="project-name" cssClass="form-control" path="name"/>
 				</div>
 
 				<div class="form-group">
-					<label for="project_type">Type</label>
-					<select name="type" class="selectpicker">
-						<option></option>
-						<option value="single">Single Year</option>
-						<option value="multi">Multi-Year</option>
-					</select>
+					<label for="type">Type</label>
+					<form:select path="type" cssClass="selectpicker" items="${typeOptions}"/>
 				</div>
 							
 				<div class="form-group">
-					<label for="sponsor">Sponsor</label>
-					<input id="sponsor" type="text" 
-							class="form-control" name="sponsor"/>
+					<label for="sponsor-name">Sponsor Name</label>
+					<form:input id="sponsor-name" cssClass="form-control" path="sponsor.name"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="sponsor-phone">Sponsor Phone</label>
+					<form:input id="sponsor-phone" cssClass="form-control" path="sponsor.phone"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="sponsor-email">Sponsor Email</label>
+					<form:input id="sponsor-email" cssClass="form-control" path="sponsor.email"/>
 				</div>
 			
 				<div class="form-group">
 					<label for="funds">Authorized Funds</label>
-					<input id="funds" type="text"
-						class="form-control" name="authorizedFunds"/>
+					<form:input id="funds" cssClass="form-control" path="authorizedFunds"/>
 				</div>
 			
 				<div class="form-group">
 					<label for="hours">Authorized Hours</label>
-					<input id="hours" type="text"
-						class="form-control" name="authorizedHours"/>
+					<form:input id="hours" cssClass="form-control" path="authorizedHours"/>
 				</div>
 			
 				<div class="form-group">
 					<label for="project-name">Description</label>
-					<textarea name="description" class="form-control" rows="3"></textarea>
+					<form:textarea path="description" cssClass="form-control" rows="3"/>
 				</div>
 				
 				<div class="form-group">
 					<label for="special">Special</label>
-					<input id="special" name="special" type="checkbox"/>
+					<form:checkbox id="special" path="special"/>
 				</div>
 			
 				<button type="submit" class="btn btn-default">Submit</button>
 	
-			</form>
+			</form:form>
 			
 		</div>
 	</div>

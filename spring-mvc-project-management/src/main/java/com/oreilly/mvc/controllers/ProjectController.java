@@ -1,7 +1,6 @@
 package com.oreilly.mvc.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oreilly.mvc.data.entities.Project;
 import com.oreilly.mvc.data.services.ProjectService;
@@ -37,38 +35,29 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addProject(HttpSession session) {
-		session.setAttribute("token", "12345");
-		System.out.println("Invoked add :: GET");
+	public String addProject(Model model) {
+				
+		//list of options for type
+		model.addAttribute("typeOptions", new ArrayList<String>() {
+				{
+					add("");
+					add("Single Year");
+					add("Multi Year");
+				}
+			});
+		
+		//must be sent, otherwise the following error will occur
+		//Neither BindingResult nor plain target object for bean name 'project' available as request attribute
+		model.addAttribute("project", new Project());
+	
 		return "project_add";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	//instead of 'HttpServletRequest request', we can use '@RequestParam'
-	//public String saveProject(HttpServletRequest request, HttpSession session) {
-	//public String saveProject(@RequestParam("name") String name, HttpSession session) {
-	
 	//grab the parameters from POST, match with parameters in Project object, and give it to me
-	public String saveProject(@ModelAttribute Project project, HttpSession session) {
-		//System.out.println(request.getParameter("name")
-		//System.out.println(name + " :: session: " + session.getAttribute("token"));
+	public String saveProject(@ModelAttribute Project project) {
 		System.out.println("Invoked save :: POST");
 		System.out.println(project);
 		return "project_add";
 	}
-	
-	/*
-	@RequestMapping(value="/add", method=RequestMethod.POST,params= {"type=multi"})
-	public String multiYearProject() {
-		System.out.println("Invoked type = mutli");
-		return "project_add";
-	}
-	
-	
-	@RequestMapping(value="/add", method=RequestMethod.POST,params= {"type=multi", "special"})
-	public String specialProject() {
-		System.out.println("Invoked type=multi + special");
-		return "project_add";
-	}
-	*/
 }

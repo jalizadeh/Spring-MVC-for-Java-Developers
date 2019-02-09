@@ -199,3 +199,10 @@
 	```html
 	<form:textarea path="notes" cssClass="form-control" rows="3"/>
 	```
+
+
+## Advanced Controllers
+- [2] Databinding Composite Objects
+	- The object `Project` is changed and new object `Sponsor` is added
+		- NOTE: the nested object, must have an empty constructor
+	- `project_add.jsp` tags are changed
