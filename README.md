@@ -206,3 +206,6 @@
 	- The object `Project` is changed and new object `Sponsor` is added
 		- NOTE: the nested object, must have an empty constructor
 	- `project_add.jsp` tags are changed
+- [3] Databinding Lists
+	- `List<String> pointsOfContact` added to `Project` object
+	- The `path` of each field must be indexed like `path="pointsOfContact[0]"`

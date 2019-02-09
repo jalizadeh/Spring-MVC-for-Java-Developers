@@ -1,6 +1,7 @@
 package com.oreilly.mvc.data.entities;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Project {
 	private Long projectId;
@@ -17,6 +18,8 @@ public class Project {
 	
 	private String year;
 	
+	private List<String> pointsOfContact;
+
 	private boolean special;
 	
 	private String type;
@@ -76,6 +79,14 @@ public class Project {
 	public void setYear(String year) {
 		this.year = year;
 	}
+	
+	public List<String> getPointsOfContact() {
+		return pointsOfContact;
+	}
+
+	public void setPointsOfContact(List<String> pointsOfContact) {
+		this.pointsOfContact = pointsOfContact;
+	}
 
 	public boolean isSpecial() {
 		return special;
@@ -97,6 +108,6 @@ public class Project {
 	public String toString() {
 		return "Project [projectId=" + projectId + ", name=" + name + ", description=" + description + ", sponsor="
 				+ sponsor + ", authorizedHours=" + authorizedHours + ", authorizedFunds=" + authorizedFunds + ", year="
-				+ year + ", special=" + special + ", type=" + type + "]";
+				+ year + ", pointsOfContact=" + pointsOfContact + ", special=" + special + ", type=" + type + "]";
 	}
 }
