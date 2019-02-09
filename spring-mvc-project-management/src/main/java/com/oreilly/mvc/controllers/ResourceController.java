@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.oreilly.mvc.data.entities.Resource;
 
@@ -47,11 +48,12 @@ public class ResourceController {
 	
 	
 	@RequestMapping("/save")
-	public String save(@ModelAttribute Resource resource) {
+	public String save(@ModelAttribute Resource resource, SessionStatus status) {
 		System.out.println("Saved: " + resource);
-
-		//Otherwise there will be {'items' must not be null}
-		//return "resource_add";
+		
+		//Mark the current handler's session processing as complete,
+		// allowing for cleanup of session attributes.
+		status.setComplete();
 		return "redirect:/resource/add";
 	}
 	

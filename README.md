@@ -250,3 +250,17 @@
 		```java
 		@SessionAttributes("resource")
 		```
+	- `resource_review.jsp` is added fro editing/saving the resource data
+- [6] SessionStatus
+	- The session must be completed and get clear of any saved attribute. The problem of previous part, it this, so method `save`, must be changed:
+	```java
+	@RequestMapping("/save")
+	public String save(@ModelAttribute Resource resource, SessionStatus status) {
+		System.out.println("Saved: " + resource);
+		
+		//Mark the current handler's session processing as complete,
+		// allowing for cleanup of session attributes.
+		status.setComplete();
+		return "redirect:/resource/add";
+	}
+	```
