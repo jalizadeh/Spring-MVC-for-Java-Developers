@@ -25,12 +25,28 @@ public class ResourceController {
 				);
 		model.addAttribute("typeOptions", options);
 		
+		//list of options for selecting a Measure
+		List<String> radios = new LinkedList<>(
+				Arrays.asList(new String[] {"Hours", "Piece", "Tons"})
+				);
+		model.addAttribute("radioOptions", radios);
+		
+		//list of options for selecting a Measure
+		List<String> checks = new LinkedList<>(
+				Arrays.asList(new String[] {"Lead Time", "Special Rate", "Requires Approval"})
+				);
+		model.addAttribute("checkOptions", checks);
+				
+		
 		return "resource_add";
 	}
 	
 	@RequestMapping("/save")
 	public String save(@ModelAttribute Resource resource) {
 		System.out.println(resource);
-		return "resource_add";
+
+		//Otherwise there will be {'items' must not be null}
+		//return "resource_add";
+		return "redirect:/resource/add";
 	}
 }

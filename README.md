@@ -181,3 +181,16 @@
 				);
 		model.addAttribute("typeOptions", options);
 		```
+- [6] Checkboxes and Radio Buttons
+	- Instead of `HTML Checkbox & Radio Button Tags`, we will use `Spring MVC Tags`. Note that the `options` must be sent from the server.
+		```html
+		<form:radiobuttons path="unitOfMeasure"  items="${radioOptions}"/>
+
+		<form:checkboxes path="indicators"  items="${checkOptions}"/>
+		```
+	- NOTE:
+		- In `ResourceController > save`, change the `return` to
+		```java
+		return "redirect:/resource/add";
+		```
+		otherwise, there will be ['items' must not be null](https://stackoverflow.com/questions/24428930/spring-form-validation-error-java-lang-illegalargumentexception-items-must-n)
