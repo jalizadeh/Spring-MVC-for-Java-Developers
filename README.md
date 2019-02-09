@@ -209,3 +209,37 @@
 - [3] Databinding Lists
 	- `List<String> pointsOfContact` added to `Project` object
 	- The `path` of each field must be indexed like `path="pointsOfContact[0]"`
+- [4] Working with ModelAttributes
+	- In a controller, `@ModelAttribute` annotated methods will be handled first, befor `@RequestMapping("path...")` annotated methods. Therefore, we can setup any needed data before the page fields are generated. Otherwise (as we did so far), if a form is POSTed, after page is refreshed, the `select` field, will be empty.
+		- Before:
+		```java
+		@RequestMapping("/add")
+		public String add(Model model) {
+			model.addAttribute("resource",new  Resource());
+			
+			//list of options for selecting a Type
+			List<String> options = new LinkedList<>(
+					Arrays.asList(new String[] {"Material", "Staff", "Other", "Equipment"})
+					);
+			model.addAttribute("typeOptions", options);
+			
+			return "resource_add";
+		}
+		```
+		- Now:
+		```java
+		@RequestMapping("/add")
+		public String add(Model model) {
+			return "resource_add";
+		}
+
+		@ModelAttribute(value="resource")
+		public Resource getResource() {
+			return new Resource();
+		}
+		
+		@ModelAttribute(value="typeOptions")
+		public List<String> getTypes(){
+			return new LinkedList<>(Arrays.asList(new String[] {"Material", "Staff", "Other", Equipment"}));
+		}
+		```
