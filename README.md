@@ -272,3 +272,9 @@
 	<script src="<spring:url value="/js/resource.js"/>"></script>
 	```
 	- NOTE: Any file in the folder `/src/main/resources/static` will be static content (client-side) and is totally managed by Spring
+- [8] @RequestBody
+	- When the AJAX code is run, the dara in form is seialized & the data is passed back as part of response body. 
+	```
+	name=printer&type=Equipment&cost=100&unitOfMeasure=Piece&indicators=Requires+Approval&_indicators=on&notes=This+printer+needs+special+approval
+	```
+	This annotation allows us to save the data, recieved as JSON, into a Java Object.

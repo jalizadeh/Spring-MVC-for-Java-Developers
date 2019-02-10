@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -16,6 +15,14 @@
 
 <script>var ctx = "${pageContext.request.contextPath}"</script>
 <script src="<spring:url value="/js/resource.js"/>"></script>
+
+<style>
+
+	input[type="radio"],input[type="checkbox"]{
+		float:left;	
+	}
+	
+</style>
 
 </head>
 <body>
