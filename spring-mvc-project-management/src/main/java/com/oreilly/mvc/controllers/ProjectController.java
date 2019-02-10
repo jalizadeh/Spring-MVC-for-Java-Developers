@@ -2,9 +2,14 @@ package com.oreilly.mvc.controllers;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oreilly.mvc.data.entities.Project;
 import com.oreilly.mvc.data.services.ProjectService;
+import com.oreilly.mvc.data.validators.ProjectValidator;
 
 @Controller
 @RequestMapping("/project")
@@ -55,9 +61,21 @@ public class ProjectController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	//grab the parameters from POST, match with parameters in Project object, and give it to me
-	public String saveProject(@ModelAttribute Project project) {
+	public String saveProject(@Valid @ModelAttribute Project project, Errors errors) {
 		System.out.println("Invoked save :: POST");
-		System.out.println(project);
+		//System.out.println(project);
+		
+		if(!errors.hasErrors()) 
+			System.out.println("The project validated.");
+		else 
+			System.out.println("The project not validated");
+		
 		return "project_add";
+	}
+	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(new ProjectValidator());
 	}
 }

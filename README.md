@@ -278,3 +278,19 @@
 	name=printer&type=Equipment&cost=100&unitOfMeasure=Piece&indicators=Requires+Approval&_indicators=on&notes=This+printer+needs+special+approval
 	```
 	This annotation allows us to save the data, recieved as JSON, into a Java Object.
+
+
+## Validation and Exception Handling
+- [2,3] Validators
+	- `ProjectValidator` contains the rules of validation
+	- `ProjectController > initBinder` adds special beans like formating, validator
+	- Dependency `javax validation-api` is needed to be used in method argument. `ProjectController > saveProject`:
+	```java
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String saveProject(@Valid @ModelAttribute Project project, Errors errors) {		
+		if(!errors.hasErrors()) 
+			System.out.println("The project validated.");
+		else 
+			System.out.println("The project not validated");
+		return "project_add";
+	}```
