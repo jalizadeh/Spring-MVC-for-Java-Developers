@@ -10,7 +10,7 @@ public class Project {
 	
 	private String name;
 	
-	@NotBlank
+	@NotBlank(message="This field can not be empty. Please provide some description.")
 	private String description;
 
 	private Sponsor sponsor;

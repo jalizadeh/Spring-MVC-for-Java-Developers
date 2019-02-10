@@ -297,3 +297,20 @@
 - [4] Bean Validation
 	- It is also possible to set the conditions in a Java object (Bean) directly by using specific annotations like `@NotBlank`.
 	- Dependency `org.hibernate hibernate-validator` is added, while the IDE says it is deprecated. So I used `javax.validation.constraints.NotBlank`
+- [5] Form Errors
+	- Up to now, we just detected if there is any error or not. Now we will show the error message, to the user, to inform him.
+	- In `project_add.jsp`, where ever we need to show the error, we have to use `<form:errors path="x"/>`
+	- Based on the generated element, a better look will be:
+	```html
+	<style type="text/css">
+		span[id$='errors']{
+			color:red;
+		}
+	</style>
+
+	<div class="form-group">
+		<label for="project-name">Name</label>
+		<form:input id="project-name" cssClass="form-control" path="name"/>
+		<form:errors path="name"/>
+	</div>
+	```

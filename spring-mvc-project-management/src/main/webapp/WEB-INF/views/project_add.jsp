@@ -14,6 +14,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="<spring:url value="/js/bootstrap-select.min.js"/>"></script>
 
+	<style type="text/css">
+		span[id$='errors']{
+			color:red;
+		}
+	</style>
+
 </head>
 <body>
 
@@ -29,6 +35,7 @@
 				<div class="form-group">
 					<label for="project-name">Name</label>
 					<form:input id="project-name" cssClass="form-control" path="name"/>
+					<form:errors path="name"/>
 				</div>
 
 				<div class="form-group">
@@ -62,8 +69,9 @@
 				</div>
 			
 				<div class="form-group">
-					<label for="project-name">Description</label>
+					<label for="description">Description</label>
 					<form:textarea path="description" cssClass="form-control" rows="3"/>
+					<form:errors path="description"/>
 				</div>
 				
 				<div class="form-group">

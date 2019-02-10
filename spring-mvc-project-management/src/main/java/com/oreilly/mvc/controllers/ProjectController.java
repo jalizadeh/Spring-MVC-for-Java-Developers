@@ -67,8 +67,10 @@ public class ProjectController {
 		
 		if(!errors.hasErrors()) 
 			System.out.println("The project validated.");
-		else 
+		else {
 			System.out.println("The project not validated");
+			return "project_add"; 
+		}
 		
 		return "project_add";
 	}
