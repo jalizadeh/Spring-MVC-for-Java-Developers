@@ -14,6 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="<spring:url value="/js/bootstrap-select.min.js"/>"></script>
 
+<script>var ctx = "${pageContext.request.contextPath}"</script>
+<script src="<spring:url value="/js/resource.js"/>"></script>
+
 </head>
 <body>
 
@@ -53,6 +56,7 @@
 				<div class="form-group">
 					<label for="indicators">Indicators</label>
 					<form:checkboxes path="indicators"  items="${checkOptions}"/>
+					<a id="request-link" href="<spring:url value="/resource/request"/>">Send Request</a>
 				</div>
 				
 				<div class="form-group">

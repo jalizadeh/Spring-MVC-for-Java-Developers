@@ -264,3 +264,11 @@
 		return "redirect:/resource/add";
 	}
 	```
+- [7] @ResponseBody
+	- This annotation allows us to provide the return value of our controller handler method, as the body of the response to a request.
+	- `resource_add.jsp` is changed:
+	```html
+	<script>var ctx = "${pageContext.request.contextPath}"</script>
+	<script src="<spring:url value="/js/resource.js"/>"></script>
+	```
+	- NOTE: Any file in the folder `/src/main/resources/static` will be static content (client-side) and is totally managed by Spring
