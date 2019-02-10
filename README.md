@@ -294,3 +294,6 @@
 			System.out.println("The project not validated");
 		return "project_add";
 	}```
+- [4] Bean Validation
+	- It is also possible to set the conditions in a Java object (Bean) directly by using specific annotations like `@NotBlank`.
+	- Dependency `org.hibernate hibernate-validator` is added, while the IDE says it is deprecated. So I used `javax.validation.constraints.NotBlank`
