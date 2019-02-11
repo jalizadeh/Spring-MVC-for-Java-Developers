@@ -293,8 +293,9 @@
 		else 
 			System.out.println("The project not validated");
 		return "project_add";
-	}```
-- [4] Bean Validation
+	}
+	```
+- [4] [Bean Validation](https://beanvalidation.org/1.0/spec/)
 	- It is also possible to set the conditions in a Java object (Bean) directly by using specific annotations like `@NotBlank`.
 	- Dependency `org.hibernate hibernate-validator` is added, while the IDE says it is deprecated. So I used `javax.validation.constraints.NotBlank`
 - [5] Form Errors
@@ -313,4 +314,21 @@
 		<form:input id="project-name" cssClass="form-control" path="name"/>
 		<form:errors path="name"/>
 	</div>
+	```
+- [6] @ExceptionHandler
+	- If any exception is raised during form insertion, or ..., this error will be shown to the user.
+	```
+	Whitelabel Error Page
+
+	This application has no explicit mapping for /error, so you are seeing this as a fallback.
+	Mon Feb 11 09:42:41 CET 2019
+	There was an unexpected error (type=Internal Server Error, status=500).
+	This is an exception.
+	```
+	- But it is possible to handle the exceptions and redirect to a proper page. The `value=Exception.class` will support a wide range of exceptions that can be handled by this method.
+	```java
+	@ExceptionHandler(value=Exception.class)
+	public String handleError(HttpServletRequest request) {
+		return "controller_error";
+	}
 	```
