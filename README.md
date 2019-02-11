@@ -332,3 +332,12 @@
 		return "controller_error";
 	}
 	```
+- [7] HandlerExceptionResolver
+	- The previous title is about handling exceptions inside controllers. With `HandlerExceptionResolver` interface provided by Spring, it is possible to have a global component, to handle exceptions globally. It is implemented in `GlobalHandlerExceptionResolver`.
+	- If specific exception is needed to be handled, it can be put inside the controller, and it will override the global exception handler`s rules, because it is a local exception handler, which has the higher priority than the global one.
+	```java
+	@ExceptionHandler(value=NullPointerException.class)
+	public String handleError(HttpServletRequest request) {
+		return "controller_error";
+	}
+	```

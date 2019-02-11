@@ -65,7 +65,7 @@ public class ResourceController {
 	}
 	
 	
-	@ExceptionHandler(value=Exception.class)
+	@ExceptionHandler(value=NullPointerException.class)
 	public String handleError(HttpServletRequest request) {
 		return "controller_error";
 	}
