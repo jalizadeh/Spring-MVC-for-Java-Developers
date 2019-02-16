@@ -346,3 +346,9 @@
 - [2] Chaining View Resolvers
 	- `WebConfiguration` is needed for accessing the properties (mappings) set in `views.properties`
 	- `other_home.jsp`  is the new page will be shown instead of `home.jsp`
+- [3] Content Negotiation
+	- What if we need to return/present data as XML/JSON/PDF? By using `com.fasterxml.jackson.dataformat  jackson-dataformat-xml` it is possible to return any object/page as needed type.
+	- `ProjectController > findProjectObject` will return the data object in path `/api/{id}`
+	- `WebMvcConfigurerAdapter` is [deprecated](https://stackoverflow.com/questions/47552835/the-type-webmvcconfigureradapter-is-deprecated), so I used `WebMvcConfigurer`
+	-❌ I couldn't present data as JSON, as mentioned in tutorial
+	- Go to `http://localhost:8080/app/project/api/{projectId}`

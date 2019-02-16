@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oreilly.mvc.data.entities.Project;
 import com.oreilly.mvc.data.services.ProjectService;
@@ -79,5 +80,12 @@ public class ProjectController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(new ProjectValidator());
+	}
+	
+	//it will return the object for XML/JSON representation
+	@ResponseBody
+	@RequestMapping(value="/api/{projectId}")
+	public Project findProjectObject(@PathVariable Long projectId) {
+		return this.projectService.find(projectId);
 	}
 }
