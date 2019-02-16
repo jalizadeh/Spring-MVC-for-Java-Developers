@@ -73,7 +73,7 @@ public class ProjectController {
 			return "project_add"; 
 		}
 		
-		return "project_add";
+		return "redirect:/project/find";
 	}
 	
 	

@@ -350,5 +350,15 @@
 	- What if we need to return/present data as XML/JSON/PDF? By using `com.fasterxml.jackson.dataformat  jackson-dataformat-xml` it is possible to return any object/page as needed type.
 	- `ProjectController > findProjectObject` will return the data object in path `/api/{id}`
 	- `WebMvcConfigurerAdapter` is [deprecated](https://stackoverflow.com/questions/47552835/the-type-webmvcconfigureradapter-is-deprecated), so I used `WebMvcConfigurer`
-	-❌ I couldn't present data as JSON, as mentioned in tutorial
+	- ❌ I couldn't present data as JSON, as mentioned in tutorial
 	- Go to `http://localhost:8080/app/project/api/{projectId}`
+- [4] Redirects
+	- When a form is submitted, if the user refreshes the (redirected) page, it will ask for resending the submitted form data, to the server again. To prevent this, after form validation, it should be "redirected" to the desired page by using `redirect:` term before the page's path. It can be any path:
+	```java
+	//ProjectController > saveProject
+
+	return "redirect:/home/";
+	//or
+	return "redirect:/project/find";
+	```
+	- [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/Get)
