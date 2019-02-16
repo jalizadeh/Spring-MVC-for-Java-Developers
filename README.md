@@ -372,3 +372,8 @@
 		this.projects.add(project);
 	}
 	```
+	- The URL of the redirected page will be `http://localhost:8080/app/home/?projectId=55`
+- [6] FlashAttributes
+	- Instead of sending only one parameter, it is possible to send the whole object at once. Using `addFlashAttribute` is another solution, with some differences.
+	- Also `MainController > goHomeAgain` needs to be changed. It won't recieve the `param` anymore, bbut accepts `@ModelAttribute("project") Project project` in the argument. 
+	- Temporarily `MainController > greeting` is disabled. Because in this case there 2 methods with equal paths.
