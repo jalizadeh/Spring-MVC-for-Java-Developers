@@ -341,3 +341,8 @@
 		return "controller_error";
 	}
 	```
+
+## View Resolution
+- [2] Chaining View Resolvers
+	- `WebConfiguration` is needed for accessing the properties (mappings) set in `views.properties`
+	- `other_home.jsp`  is the new page will be shown instead of `home.jsp`
