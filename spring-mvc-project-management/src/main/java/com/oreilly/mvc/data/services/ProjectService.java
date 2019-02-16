@@ -56,4 +56,8 @@ public class ProjectService {
 	private Long randomId() {
 		return Math.abs(new Random().nextLong());
 	}
+	
+	public void save(Project project){
+		this.projects.add(project);
+	}
 }

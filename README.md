@@ -362,3 +362,13 @@
 	return "redirect:/project/find";
 	```
 	- [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/Get)
+- [5] RedirectAttributes
+	- Most of the time, it is needed to send some data after filling a form to the redirected page. By `RedirectAttributes` it becomes possible
+	- `ProjectController > saveProject` must have `RedirectAttributes` to hold the parameter.
+	- Reciever path must also get the parameter `@RequestMapping(value="/", params="projectId")`
+	- `ProjectService > save` is added (but not mentioned in the tutorial)
+	```java
+	public void save(Project project){
+		this.projects.add(project);
+	}
+	```

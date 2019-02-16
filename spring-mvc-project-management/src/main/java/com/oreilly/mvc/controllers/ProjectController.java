@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oreilly.mvc.data.entities.Project;
 import com.oreilly.mvc.data.services.ProjectService;
@@ -62,10 +63,11 @@ public class ProjectController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	//grab the parameters from POST, match with parameters in Project object, and give it to me
-	public String saveProject(@Valid @ModelAttribute Project project, Errors errors) {
+	public String saveProject(@Valid @ModelAttribute Project project, Errors errors,
+			RedirectAttributes attributes) {
 		System.out.println("Invoked save :: POST");
 		//System.out.println(project);
-		
+
 		if(!errors.hasErrors()) 
 			System.out.println("The project validated.");
 		else {
@@ -73,7 +75,11 @@ public class ProjectController {
 			return "project_add"; 
 		}
 		
-		return "redirect:/project/find";
+		project.setProjectId(55L);
+		this.projectService.save(project);
+		attributes.addAttribute("projectId",project.getProjectId().toString());
+		
+		return "redirect:/home/";
 	}
 	
 	
