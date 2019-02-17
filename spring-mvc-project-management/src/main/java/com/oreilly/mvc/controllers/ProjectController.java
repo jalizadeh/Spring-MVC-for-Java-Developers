@@ -75,7 +75,7 @@ public class ProjectController {
 	public String saveProject(@Valid @ModelAttribute Project project, Errors errors,
 			RedirectAttributes attributes) {
 		System.out.println("Invoked save :: POST");
-		//System.out.println(project);
+		System.out.println(project);
 
 		if(!errors.hasErrors()) 
 			System.out.println("The project validated.");

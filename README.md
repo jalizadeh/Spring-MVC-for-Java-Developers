@@ -403,3 +403,14 @@
 	- ❌ I couldn't present data as JSON, as mentioned in tutorial. When I use Firefox, it shows as XML, but when I use Postman, the response is in JSON! 🤷‍♂️
 - [5] Controller Advice
 	- We can define a master class `com.oreilly.mvc.controllers.GlobalControllerAdvice` ,annotated with `@ControllerAdvice(annotations=Controller.class)` which holds common methods, handlers, validator and .... Then if a any bean anotated with `@Controller`, the rules will be fetched from this class.
+- [6] Databinding With Converters
+	- With `Converter` it is possible to have global converters to be used when ever & where ever, we need to convert types (like String to Date) after form submission.
+	- `com.oreilly.mvc.converters.JulianDateConverter` will handle how to convert String to Date for field `Project.startDate`
+	- Also in `WebConfiguration`, the method must be added:
+	```java
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		WebMvcConfigurer.super.addFormatters(registry);
+		registry.addConverter(new JulianDateConverter());
+	}
+	```

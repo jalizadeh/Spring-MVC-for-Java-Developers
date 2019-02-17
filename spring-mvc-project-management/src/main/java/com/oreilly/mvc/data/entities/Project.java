@@ -1,6 +1,7 @@
 package com.oreilly.mvc.data.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -26,6 +27,8 @@ public class Project {
 	private boolean special;
 	
 	private String type;
+	
+	private Date startDate;
 
 	public Long getProjectId() {
 		return projectId;
@@ -107,10 +110,19 @@ public class Project {
 		this.type = type;
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", name=" + name + ", description=" + description + ", sponsor="
 				+ sponsor + ", authorizedHours=" + authorizedHours + ", authorizedFunds=" + authorizedFunds + ", year="
-				+ year + ", pointsOfContact=" + pointsOfContact + ", special=" + special + ", type=" + type + "]";
+				+ year + ", pointsOfContact=" + pointsOfContact + ", special=" + special + ", type=" + type
+				+ ", startDate=" + startDate + "]";
 	}
 }

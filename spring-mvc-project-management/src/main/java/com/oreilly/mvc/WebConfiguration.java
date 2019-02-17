@@ -2,6 +2,7 @@ package com.oreilly.mvc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.xml.MappingJackson2XmlView;
 
+import com.oreilly.mvc.converters.JulianDateConverter;
 import com.oreilly.mvc.interceptors.GlobalInterceptor;
 
 @Configuration
@@ -50,6 +52,13 @@ public class WebConfiguration implements WebMvcConfigurer{
 		registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/project/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
+
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		WebMvcConfigurer.super.addFormatters(registry);
+		registry.addConverter(new JulianDateConverter());
+	}
+	
 	
 	
 	
