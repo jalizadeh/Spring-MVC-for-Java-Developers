@@ -91,11 +91,13 @@ public class ProjectController {
 		return "redirect:/home/";
 	}
 	
-	
+	/*
+	 * moved to GloablControllerAdvice
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(new ProjectValidator());
 	}
+	*/
 	
 	//it will return the object for XML/JSON representation
 	@ResponseBody

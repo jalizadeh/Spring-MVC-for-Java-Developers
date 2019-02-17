@@ -401,3 +401,5 @@
 - [4] JSON Support
 	- Now resources are shown in their own page `resources`
 	- ❌ I couldn't present data as JSON, as mentioned in tutorial. When I use Firefox, it shows as XML, but when I use Postman, the response is in JSON! 🤷‍♂️
+- [5] Controller Advice
+	- We can define a master class `com.oreilly.mvc.controllers.GlobalControllerAdvice` ,annotated with `@ControllerAdvice(annotations=Controller.class)` which holds common methods, handlers, validator and .... Then if a any bean anotated with `@Controller`, the rules will be fetched from this class.

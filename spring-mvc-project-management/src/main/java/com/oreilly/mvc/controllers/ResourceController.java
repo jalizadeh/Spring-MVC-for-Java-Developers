@@ -70,14 +70,17 @@ public class ResourceController {
 		if(true)
 			throw new RuntimeException("This is an exception.");
 		*/
-		return "resource_add";
+		//return "resource_add";
+		throw new NullPointerException();
 	}
 	
-	
+	/*
+	 * moved to GloablControllerAdvice
 	@ExceptionHandler(value=NullPointerException.class)
 	public String handleError(HttpServletRequest request) {
 		return "controller_error";
 	}
+	*/
 	
 	
 	@RequestMapping("/save")
