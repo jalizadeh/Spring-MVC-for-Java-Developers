@@ -386,3 +386,15 @@
 	```html
 	<li><a>The time will appear only in 'project' ${currentDate}</a></li>
 	```
+- [3] Bean Scopes
+	- By setting a bean's scope, Spring will be able to handle the threads needed for that bean. During whole life of application, how many times a beans needs to be created.
+		- `SCOPE_APPLICATION`: since the application start, bean will be created.
+		- `SCOPE_REQUEST`: each request will create only one intance of bean.
+		- `SCOPE_SESSION`: there is a unique instance for each session.
+	- `com.oreilly.mvc.HitCounter` is the scoped-bean
+	```java
+	...
+	@Scope(scopeName=WebApplicationContext.SCOPE_SESSION, proxyMode=ScopedProxyMode.TARGET_CLASS)
+	...
+	```
+	- Each time `ProjectController > addProject` is invoked, the bean will be run.

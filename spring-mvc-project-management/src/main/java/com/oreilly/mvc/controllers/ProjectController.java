@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.oreilly.mvc.HitCounter;
 import com.oreilly.mvc.data.entities.Project;
 import com.oreilly.mvc.data.services.ProjectService;
 import com.oreilly.mvc.data.validators.ProjectValidator;
@@ -28,6 +29,10 @@ public class ProjectController {
 	
 	@Autowired
 	public ProjectService projectService;
+	
+	@Autowired
+	public HitCounter hitCounter;
+	
 	
 	@RequestMapping(value="/{projectId}")
 	public String findProject(Model model, @PathVariable Long projectId) {
@@ -44,6 +49,10 @@ public class ProjectController {
 
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String addProject(Model model) {
+		
+		//Bean scope test
+		hitCounter.setCounter(hitCounter.getCounter() + 1);
+		System.out.println("hit counter: "+hitCounter.getCounter());
 				
 		//list of options for type
 		model.addAttribute("typeOptions", new ArrayList<String>() {
