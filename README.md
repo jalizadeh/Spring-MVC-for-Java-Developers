@@ -377,3 +377,12 @@
 	- Instead of sending only one parameter, it is possible to send the whole object at once. Using `addFlashAttribute` is another solution, with some differences.
 	- Also `MainController > goHomeAgain` needs to be changed. It won't recieve the `param` anymore, bbut accepts `@ModelAttribute("project") Project project` in the argument. 
 	- Temporarily `MainController > greeting` is disabled. Because in this case there 2 methods with equal paths.
+## Advanced Components
+- [2] Handler Interceptors
+	- It allows us to intercept if any action is taken place (even in specific path). So then specific actions can be done.
+	- `com.oreilly.mvc.interceptors.GlobalInterceptor` will handle when to intercept.
+	- `WebConfiguration > addInterceptors` will manage the scope of the interception.
+	- For demonstration, `header` is modified:
+	```html
+	<li><a>The time will appear only in 'project' ${currentDate}</a></li>
+	```

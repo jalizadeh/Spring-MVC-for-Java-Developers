@@ -36,6 +36,8 @@
         		
         		</li>
         		
+        		<li><a>The time will appear only in 'project' ${currentDate}</a></li>
+        		
     		</ul>
     		
 		</div>

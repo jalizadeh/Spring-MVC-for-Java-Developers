@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -12,10 +13,10 @@ import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.xml.MappingJackson2XmlView;
 
+import com.oreilly.mvc.interceptors.GlobalInterceptor;
+
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer{
-	
-	
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -40,4 +41,16 @@ public class WebConfiguration implements WebMvcConfigurer{
 		viewResolver.setOrder(0);
 		return viewResolver;
 	}
+
+	/*
+	 * `path` will restrict the interceptor scope. 
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/project/**");
+		WebMvcConfigurer.super.addInterceptors(registry);
+	}
+	
+	
+	
 }
