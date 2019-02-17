@@ -419,6 +419,13 @@
 	```java
 	registry.addConverter(resourceConverter);
 	```
+- [8] File Upload Support
+	- `ResourceController > handleUpload` handles the file uploaded. Note that in the form, `enctype` must be defined:
+	```html
+	<spring:url value="/resource/upload" var="uploadURL"/>
+	<form method="POST" action="${uploadURL}" enctype="multipart/form-data">
+	```
+
 
 ## Extra
 	- [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)

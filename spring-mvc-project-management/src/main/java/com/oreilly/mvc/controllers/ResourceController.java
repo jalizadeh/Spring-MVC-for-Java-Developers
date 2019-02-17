@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.mvc.data.entities.Resource;
 import com.oreilly.mvc.data.services.ResourceService;
@@ -123,5 +125,15 @@ public class ResourceController {
 	@RequestMapping("/{resourceId}")
 	public Resource findResource(@PathVariable("resourceId") Resource resource) {
 		return resource;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/upload")
+	public String handleUpload(@RequestParam("file") MultipartFile file) {
+		if(!file.isEmpty())
+			return "The file size is: " + file.getSize() + " bytes";
+		else
+			return "The file is empty";
 	}
 }
