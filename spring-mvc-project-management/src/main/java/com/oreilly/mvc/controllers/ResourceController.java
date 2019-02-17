@@ -6,11 +6,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,11 +20,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.oreilly.mvc.data.entities.Resource;
+import com.oreilly.mvc.data.services.ResourceService;
 
 @Controller
 @RequestMapping("/resource")
 @SessionAttributes("resource")
 public class ResourceController {
+	
+	
+	@Autowired
+	private ResourceService resourceService;
 	
 	@ResponseBody
 	@RequestMapping("/request")
@@ -58,9 +65,11 @@ public class ResourceController {
 	public String add(Model model) {
 		System.out.println("add");
 		
+		/*
+		 * an error is thrown intentionally for testing GlobalHandlerException
 		if(true)
 			throw new RuntimeException("This is an exception.");
-		
+		*/
 		return "resource_add";
 	}
 	
@@ -86,5 +95,17 @@ public class ResourceController {
 	public String review(@ModelAttribute Resource resource) {
 		System.out.println("review");
 		return "resource_review"; 	
+	}
+	
+	@RequestMapping("/find")
+	public String find(Model model) {
+		model.addAttribute("resources", this.resourceService.findAll());
+		return "resources";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/{resourceId}")
+	public Resource findResource(@PathVariable("resourceId") Long resourceId) {
+		return this.resourceService.find(resourceId);
 	}
 }

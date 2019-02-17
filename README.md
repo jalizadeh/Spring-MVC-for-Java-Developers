@@ -398,3 +398,6 @@
 	...
 	```
 	- Each time `ProjectController > addProject` is invoked, the bean will be run.
+- [4] JSON Support
+	- Now resources are shown in their own page `resources`
+	- ❌ I couldn't present data as JSON, as mentioned in tutorial. When I use Firefox, it shows as XML, but when I use Postman, the response is in JSON! 🤷‍♂️
