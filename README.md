@@ -414,3 +414,11 @@
 		registry.addConverter(new JulianDateConverter());
 	}
 	```
+- [7] Databinding Arguments with Converters
+	- When a `Resource` object is accessed via `ResourceController > findResource`, it will return the object itself. In `com.oreilly.mvc.converters.ResourceConverter` it is configured to access the service manage the conversion process. It is just added to the `addFormatters`
+	```java
+	registry.addConverter(resourceConverter);
+	```
+
+## Extra
+	- [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)

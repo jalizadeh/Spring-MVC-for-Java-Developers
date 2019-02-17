@@ -14,12 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="<spring:url value="/js/bootstrap-select.min.js"/>"></script>
 
-	<style type="text/css">
-		span[id$='errors']{
-			color:red;
-		}
-	</style>
-
+	<link rel="stylesheet" href="<spring:url value="/css/style.css"/>" type="text/css"/>
 </head>
 <body>
 

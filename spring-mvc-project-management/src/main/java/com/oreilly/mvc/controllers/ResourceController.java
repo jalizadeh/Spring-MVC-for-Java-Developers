@@ -5,11 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,8 +72,9 @@ public class ResourceController {
 		if(true)
 			throw new RuntimeException("This is an exception.");
 		*/
-		//return "resource_add";
-		throw new NullPointerException();
+		
+		//throw new NullPointerException();
+		return "resource_add";
 	}
 	
 	/*
@@ -84,7 +87,9 @@ public class ResourceController {
 	
 	
 	@RequestMapping("/save")
-	public String save(@ModelAttribute Resource resource, SessionStatus status) {
+	public String save(@ModelAttribute Resource resource, SessionStatus status, 
+			Errors errors) {
+		
 		System.out.println("Saved: " + resource);
 		
 		//Mark the current handler's session processing as complete,
@@ -95,7 +100,15 @@ public class ResourceController {
 	
 	
 	@RequestMapping("/review")
-	public String review(@ModelAttribute Resource resource) {
+	public String review(@Valid @ModelAttribute Resource resource,Errors errors) {
+		
+		if(!errors.hasErrors()) 
+			System.out.println("The resource validated.");
+		else {
+			System.out.println("The resource not validated");
+			return "resource_add"; 
+		}
+	
 		System.out.println("review");
 		return "resource_review"; 	
 	}
@@ -108,7 +121,7 @@ public class ResourceController {
 	
 	@ResponseBody
 	@RequestMapping("/{resourceId}")
-	public Resource findResource(@PathVariable("resourceId") Long resourceId) {
-		return this.resourceService.find(resourceId);
+	public Resource findResource(@PathVariable("resourceId") Resource resource) {
+		return resource;
 	}
 }

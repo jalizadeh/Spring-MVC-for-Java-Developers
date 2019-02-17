@@ -1,0 +1,11 @@
+/*
+* My extra css codes
+*/
+
+span[id$='errors']{
+	color:red;
+}
+
+input[type="radio"],input[type="checkbox"]{
+	float:left;	
+}

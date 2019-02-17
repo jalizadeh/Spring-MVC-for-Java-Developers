@@ -17,7 +17,8 @@ public class ProjectValidator implements Validator {
 		Project project = (Project) target;
 		if(project.getName().length() < 5)
 			errors.rejectValue("name", "project.name", 
-					"The project name is too short. It must be longer than 5 characters.");
+					"The project name is too short. It must be longer than 5 characters.");	
 	}
 
+	
 }

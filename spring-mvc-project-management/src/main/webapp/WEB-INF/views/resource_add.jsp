@@ -16,13 +16,7 @@
 <script>var ctx = "${pageContext.request.contextPath}"</script>
 <script src="<spring:url value="/js/resource.js"/>"></script>
 
-<style>
-
-	input[type="radio"],input[type="checkbox"]{
-		float:left;	
-	}
-	
-</style>
+<link rel="stylesheet" href="<spring:url value="/css/style.css"/>" type="text/css"/>
 
 </head>
 <body>
@@ -43,6 +37,7 @@
 				<div class="form-group">
 					<label for="resource-name">Name</label>
 					<form:input path="name" cssClass="form-control" id="resource-name"/>
+					<form:errors path="name"/>
 				</div>
 
 				<div class="form-group">

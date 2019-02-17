@@ -1,5 +1,6 @@
 package com.oreilly.mvc;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -15,10 +16,14 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.xml.MappingJackson2XmlView;
 
 import com.oreilly.mvc.converters.JulianDateConverter;
+import com.oreilly.mvc.converters.ResourceConverter;
 import com.oreilly.mvc.interceptors.GlobalInterceptor;
 
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer{
+	
+	@Autowired
+	private ResourceConverter resourceConverter;
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -56,10 +61,7 @@ public class WebConfiguration implements WebMvcConfigurer{
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		WebMvcConfigurer.super.addFormatters(registry);
+		registry.addConverter(resourceConverter);
 		registry.addConverter(new JulianDateConverter());
 	}
-	
-	
-	
-	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.oreilly.mvc.data.validators.ProjectValidator;
+import com.oreilly.mvc.data.validators.ResourceValidator;
 
 /*
  * All controllers have access to methods inside this advisor
@@ -27,9 +28,14 @@ public class GlobalControllerAdvice {
 	
 	
 	//from ProjectController
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
+	@InitBinder("project") //the value must be model's name
+	public void initProjectBinder(WebDataBinder binder) {
 		binder.addValidators(new ProjectValidator());
+	}
+	
+	@InitBinder("resource") //the value must be model's name
+	public void initResourceBinder(WebDataBinder binder) {
+		binder.addValidators(new ResourceValidator());
 	}
 	
 	//from ResourceController
