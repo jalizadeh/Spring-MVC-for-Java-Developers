@@ -493,6 +493,12 @@
 	public class FullStackTests {
 	...
 	```
+- [4] Posts with TestRestTemplate
+	- With `TestRestTemplate`  we can test post operations on endpoints.
+	- ❌ I don't know why it's not working.
+	```
+	java.lang.NullPointerException
+	```
 
 
 ## Extra
