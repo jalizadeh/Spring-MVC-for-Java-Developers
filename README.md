@@ -499,6 +499,10 @@
 	```
 	java.lang.NullPointerException
 	```
+- [5] Context Only Testing
+	- Instead of starting-up the server, Spring hands off the request to the controllers, similar to a HTTP Requests were being processed.
+	- `ContextOnlyTests` contains the test.
+
 
 
 ## Extra
