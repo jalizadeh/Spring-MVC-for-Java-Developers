@@ -11,7 +11,7 @@
 - Spring Core
 - HTML, JavaScript, XML
 
-## Spring MVC Java Configuration
+## [3] Spring MVC Java Configuration
 - [3] Project `Spring MVC Foundation` is configured
 - [4] Logging dependencies added
 - [5] `AppInitializer` & `WebConfig` is done.
@@ -26,7 +26,7 @@
 	- `hello.jsp` holds the beautified `${message}`
 	- `MainController` will send the message as `message`
 
-## Boot Configuration
+## [4] Boot Configuration
 - [2] Boot Basics
 	- Project `spring-mvc-boot` is configured. It is a `Spring Starter Project`
 	- To see the message, go to `http://localhost:8080/main/`
@@ -69,7 +69,7 @@
 	- `war` file is available in `project/target/`
 
 
-## Basic Request Processing
+## [5] Basic Request Processing
 - [2] Project `spring-mvc-project-management` setup is done.
 	- Go to `http://localhost:8080/home/`
 - [3] Handling Requests with Controllers
@@ -117,7 +117,7 @@
 	- And now, instead of those mentioned above, by using `@ModelAttribute Project project` as a method's argument, the paramateres' names will match with the names of the parameters in the java object. ALL IN ONE 😍
 
 
-## Spring MVC Tags
+## [6] Spring MVC Tags
 - [2] URL Tag
 	- For having dynamic URLs, we can use URL Tags in web pages. So, if any `Context Root Path` is changed, the URLs will be updated with the new path.
 		- In `jsp` files, use:
@@ -201,7 +201,7 @@
 	```
 
 
-## Advanced Controllers
+## [7] Advanced Controllers
 - [2] Databinding Composite Objects
 	- The object `Project` is changed and new object `Sponsor` is added
 		- NOTE: the nested object, must have an empty constructor
@@ -280,7 +280,7 @@
 	This annotation allows us to save the data, recieved as JSON, into a Java Object.
 
 
-## Validation and Exception Handling
+## [8] Validation and Exception Handling
 - [2,3] Validators
 	- `ProjectValidator` contains the rules of validation
 	- `ProjectController > initBinder` adds special beans like formating, validator
@@ -342,7 +342,7 @@
 	}
 	```
 
-## View Resolution
+## [9] View Resolution
 - [2] Chaining View Resolvers
 	- `WebConfiguration` is needed for accessing the properties (mappings) set in `views.properties`
 	- `other_home.jsp`  is the new page will be shown instead of `home.jsp`
@@ -377,7 +377,8 @@
 	- Instead of sending only one parameter, it is possible to send the whole object at once. Using `addFlashAttribute` is another solution, with some differences.
 	- Also `MainController > goHomeAgain` needs to be changed. It won't recieve the `param` anymore, bbut accepts `@ModelAttribute("project") Project project` in the argument. 
 	- Temporarily `MainController > greeting` is disabled. Because in this case there 2 methods with equal paths.
-## Advanced Components
+
+## [10] Advanced Components
 - [2] Handler Interceptors
 	- It allows us to intercept if any action is taken place (even in specific path). So then specific actions can be done.
 	- `com.oreilly.mvc.interceptors.GlobalInterceptor` will handle when to intercept.
@@ -420,12 +421,17 @@
 	registry.addConverter(resourceConverter);
 	```
 - [8] File Upload Support
-	- `ResourceController > handleUpload` handles the file uploaded. Note that in the form, `enctype` must be defined:
+	- `ResourceController > handleUpload` handles the file uploaded.
+	- Note that in the form, `enctype` must be defined:
 	```html
 	<spring:url value="/resource/upload" var="uploadURL"/>
 	<form method="POST" action="${uploadURL}" enctype="multipart/form-data">
 	```
 
 
+## [11] Security Features
+- [1] Security Features
+	- How to prevent [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) & [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks with Spring MVC
+
 ## Extra
-	- [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
+- [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
