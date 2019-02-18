@@ -484,6 +484,16 @@
 	- Make sure the dependency `org.springframework.boot spring-boot-starter-test` is installed
 	- The class `com.oreilly.mvc.FullStackTests` holds the test
 	- Run As `JUnit`
+- [3] Introducing the TestRestTemplate
+	- For testing if a HTTP request is working fine, `TestRestTemplate` is usefull
+	- It is necessary to define port number. So:
+	```java
+	@RunWith(SpringRunner.class)
+	@SpringBootTest(webEnvironment=WebEnvironment.DEFINED_PORT)
+	public class FullStackTests {
+	...
+	```
+
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
