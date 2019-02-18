@@ -445,7 +445,21 @@
 	}
 	```
 	- If user is not allowed to do HTTP Request, he will get `Invalid CORS request` response.
-	
+- [4] Granular CORS Configuration
+	- Instead of defining global rules, it is also possible to define some specific rules for each controller and even for each method.
+	- `ProjectController`:
+	```java
+	...
+	@CrossOrigin(origins="http://otherdomain.com")	//gives access to all methods & request types
+	public class ProjectController {
+	.
+	.
+	.
+	@CrossOrigin(origins="http://anotherdomain.com", methods=RequestMethod.POST)	//gives access only to this method & request type
+	public Project findProjectObject(@PathVariable Long projectId) {
+	...
+	```
+	- [x] Disable rules in `WebConfiguration`
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)

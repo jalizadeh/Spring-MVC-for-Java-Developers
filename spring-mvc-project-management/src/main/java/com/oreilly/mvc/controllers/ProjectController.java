@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.oreilly.mvc.data.validators.ProjectValidator;
 
 @Controller
 @RequestMapping("/project")
+@CrossOrigin(origins="http://otherdomain.com")	
 public class ProjectController {
 	
 	
@@ -102,6 +104,7 @@ public class ProjectController {
 	//it will return the object for XML/JSON representation
 	@ResponseBody
 	@RequestMapping(value="/api/{projectId}")
+	@CrossOrigin(origins="http://anotherdomain.com", methods=RequestMethod.POST)	
 	public Project findProjectObject(@PathVariable Long projectId) {
 		return this.projectService.find(projectId);
 	}

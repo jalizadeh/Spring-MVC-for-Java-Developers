@@ -72,6 +72,6 @@ public class WebConfiguration implements WebMvcConfigurer{
 		//registry.addMapping("/**").allowedMethods("");
 		
 		//any request ONLY from this domain is allowed
-		registry.addMapping("/**").allowedOrigins("http://somedomain.com").allowedMethods("*");
+		//registry.addMapping("/**").allowedOrigins("http://somedomain.com").allowedMethods("*");
 	}
 }
