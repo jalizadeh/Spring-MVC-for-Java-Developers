@@ -479,5 +479,11 @@
 
 
 
+## [12] MVC Testing
+- [2] Test Case Configuration
+	- Make sure the dependency `org.springframework.boot spring-boot-starter-test` is installed
+	- The class `com.oreilly.mvc.FullStackTests` holds the test
+	- Run As `JUnit`
+
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
