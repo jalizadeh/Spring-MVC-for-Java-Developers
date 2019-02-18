@@ -432,6 +432,20 @@
 ## [11] Security Features
 - [1] Security Features
 	- How to prevent [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) & [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks with Spring MVC
+- [3] Global CORS Configuration
+	- In `WebConfiguration` rules of accessing to the server's data must be defined:
+	```java
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		//NO other domain is allowed
+		registry.addMapping("/**").allowedMethods("");
+		
+		//any request, originated ONLY from this domain is allowed
+		registry.addMapping("/**").allowedOrigins("http://somedomain.com").allowedMethods("*");
+	}
+	```
+	- If user is not allowed to do HTTP Request, he will get `Invalid CORS request` response.
+	
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)

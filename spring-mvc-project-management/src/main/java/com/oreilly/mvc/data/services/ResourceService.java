@@ -18,9 +18,9 @@ public class ResourceService {
 	private List<Resource> resources = new LinkedList<>();
 	
 	public ResourceService() {
-		Resource res1 = this.createResource("coder", "Staff", 100.00);
-		Resource res2 = this.createResource("Analyst", "Staff", 50.00);
-		Resource res3 = this.createResource("Tester", "Staff", 70.00);
+		Resource res1 = this.createResource(1L, "coder", "Staff", 100.00);
+		Resource res2 = this.createResource(2L, "Analyst", "Staff", 50.00);
+		Resource res3 = this.createResource(3L, "Tester", "Staff", 70.00);
 		
 		this.resources.addAll(Arrays.asList(new Resource[] {res1, res2, res3}));
 	}
@@ -41,9 +41,9 @@ public class ResourceService {
 	}
 	
 
-	private Resource createResource(String name, String type, double cost) {
+	private Resource createResource(Long id, String name, String type, double cost) {
 		Resource r = new Resource();
-		r.setResourceId(randomId());
+		r.setResourceId(id);
 		r.setName(name);
 		r.setType(type);
 		r.setCost(BigDecimal.valueOf(cost));
