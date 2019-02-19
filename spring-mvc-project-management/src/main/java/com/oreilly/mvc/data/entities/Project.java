@@ -29,6 +29,18 @@ public class Project {
 	private String type;
 	
 	private Date startDate;
+	
+	
+
+	public Project() {
+	}
+
+	public Project(Long projectId, String name, String description) {
+		super();
+		this.projectId = projectId;
+		this.name = name;
+		this.description = description;
+	}
 
 	public Long getProjectId() {
 		return projectId;

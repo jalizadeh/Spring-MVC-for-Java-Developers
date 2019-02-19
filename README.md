@@ -504,6 +504,13 @@
 	- `ContextOnlyTests` contains the test.
 - [6] Fluent API
 	- Posting some data and check if the response is finally redirected to `/home/`
+- [7] Limited Context Testing
+	- According to [Annotation Type WebMvcTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/web/servlet/WebMvcTest.html):
+	> Using this annotation will disable full auto-configuration and instead apply only configuration relevant to MVC tests (i.e. @Controller, @ControllerAdvice, @JsonComponent Filter, WebMvcConfigurer and HandlerMethodArgumentResolver beans but not @Component, @Service or @Repository beans). [...] If you are looking to load your full application configuration and use MockMVC, you should consider @SpringBootTest combined with @AutoConfigureMockMvc rather than this annotation.
+	- But notice, in this way it is necessary to mention the controllers involved in the test
+	- ❌ I don't know why there is this error:
+	```Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.oreilly.mvc.data.services.ResourceService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	```
 
 
 ## Extra

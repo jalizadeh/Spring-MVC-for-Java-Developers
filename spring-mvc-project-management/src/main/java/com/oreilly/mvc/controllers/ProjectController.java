@@ -25,7 +25,7 @@ import com.oreilly.mvc.data.validators.ProjectValidator;
 
 @Controller
 @RequestMapping("/project")
-//@CrossOrigin(origins="http://otherdomain.com")	
+@CrossOrigin(origins="http://otherdomain.com")	
 public class ProjectController {
 	
 	
@@ -104,7 +104,7 @@ public class ProjectController {
 	//it will return the object for XML/JSON representation
 	@ResponseBody
 	@RequestMapping(value="/api/{projectId}")
-	//@CrossOrigin(origins="http://anotherdomain.com", methods=RequestMethod.POST)	
+	@CrossOrigin(origins="http://anotherdomain.com", methods=RequestMethod.POST)	
 	public Project findProjectObject(@PathVariable Long projectId) {
 		return this.projectService.find(projectId);
 	}
