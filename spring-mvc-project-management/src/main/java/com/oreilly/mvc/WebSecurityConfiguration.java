@@ -11,6 +11,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//allow all accesses
 		http.authorizeRequests().anyRequest().permitAll();
+		
+		http.csrf().disable();
 	}
 
 	

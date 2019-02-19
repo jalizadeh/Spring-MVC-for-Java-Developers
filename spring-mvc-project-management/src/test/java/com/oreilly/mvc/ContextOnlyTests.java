@@ -2,8 +2,10 @@ package com.oreilly.mvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,5 +30,15 @@ public class ContextOnlyTests {
 				.andDo(print())
 				.andExpect(content().string(containsString("Java Project")));
 	}
-
+	
+	
+	@Test
+	public void test2() throws Exception {
+		this.mockMvc
+				.perform(post("/project/add")
+						.param("name", "Test project")
+						.param("description", "Desc test"))
+				.andDo(print())
+				.andExpect(redirectedUrl("/home/"));
+	}
 }

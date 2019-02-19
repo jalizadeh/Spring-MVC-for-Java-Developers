@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -66,6 +68,7 @@ public class WebConfiguration implements WebMvcConfigurer{
 		registry.addConverter(new JulianDateConverter());
 	}
 
+	/*
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		//NO other domain is allowed
@@ -74,4 +77,5 @@ public class WebConfiguration implements WebMvcConfigurer{
 		//any request ONLY from this domain is allowed
 		//registry.addMapping("/**").allowedOrigins("http://somedomain.com").allowedMethods("*");
 	}
+	*/
 }

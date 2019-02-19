@@ -495,14 +495,15 @@
 	```
 - [4] Posts with TestRestTemplate
 	- With `TestRestTemplate`  we can test post operations on endpoints.
-	- ❌ I don't know why it's not working.
-	```
-	java.lang.NullPointerException
+	- For testing, disable `CSRF` feature by this code in `WebSecurityConfiguration`, otherwise there will be `NullPointerException`, because the form is `CSRF` proof.
+	```java
+	http.csrf().disable();
 	```
 - [5] Context Only Testing
 	- Instead of starting-up the server, Spring hands off the request to the controllers, similar to a HTTP Requests were being processed.
 	- `ContextOnlyTests` contains the test.
-
+- [6] Fluent API
+	- Posting some data and check if the response is finally redirected to `/home/`
 
 
 ## Extra
