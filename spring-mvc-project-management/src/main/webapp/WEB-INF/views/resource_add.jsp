@@ -48,6 +48,7 @@
 				<div class="form-group">
 					<label for="cost">Cost</label>
 					<form:input id="cost" cssClass="form-control" path="cost" />
+					<a id="pricing-link" href="<spring:url value="/resource/pricing"/>">Get Price</a>
 				</div>
 
 				<div class="form-group">

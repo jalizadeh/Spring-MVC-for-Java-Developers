@@ -3,16 +3,14 @@ package com.oreilly.mvc.controllers;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.mvc.data.entities.Resource;
@@ -136,4 +135,34 @@ public class ResourceController {
 		else
 			return "The file is empty";
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/pricing")
+	public DeferredResult<String> getPricing(){
+		System.out.println("getPricing started...");
+		DeferredResult<String> deferredResult = new DeferredResult<>();
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				System.out.println("runnable started...");
+				
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				//create a random integer
+				deferredResult.setResult(String.valueOf(new Random().nextInt(1000) + 1));
+				
+				System.out.println("runnable finished...");
+			}
+		});
+		
+		System.out.println("getPricing finished...");
+		return deferredResult;
+ 	}
 }

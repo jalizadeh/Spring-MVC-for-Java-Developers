@@ -12,6 +12,8 @@
 - HTML, JavaScript, XML
 
 ## [3] Spring MVC Java Configuration
+- [1] Spring MVC Java Configuration
+- [2] Configuration History
 - [3] Project `Spring MVC Foundation` is configured
 - [4] Logging dependencies added
 - [5] `AppInitializer` & `WebConfig` is done.
@@ -27,6 +29,7 @@
 	- `MainController` will send the message as `message`
 
 ## [4] Boot Configuration
+- [1] Boot Configuration
 - [2] Boot Basics
 	- Project `spring-mvc-boot` is configured. It is a `Spring Starter Project`
 	- To see the message, go to `http://localhost:8080/main/`
@@ -70,6 +73,7 @@
 
 
 ## [5] Basic Request Processing
+- [1] Request Processing Overview
 - [2] Project `spring-mvc-project-management` setup is done.
 	- Go to `http://localhost:8080/home/`
 - [3] Handling Requests with Controllers
@@ -118,6 +122,7 @@
 
 
 ## [6] Spring MVC Tags
+- [1] Spring MVC Tags Overview
 - [2] URL Tag
 	- For having dynamic URLs, we can use URL Tags in web pages. So, if any `Context Root Path` is changed, the URLs will be updated with the new path.
 		- In `jsp` files, use:
@@ -202,6 +207,7 @@
 
 
 ## [7] Advanced Controllers
+- [1] Advanced Controllers Overview
 - [2] Databinding Composite Objects
 	- The object `Project` is changed and new object `Sponsor` is added
 		- NOTE: the nested object, must have an empty constructor
@@ -273,14 +279,16 @@
 	```
 	- NOTE: Any file in the folder `/src/main/resources/static` will be static content (client-side) and is totally managed by Spring
 - [8] @RequestBody
-	- When the AJAX code is run, the dara in form is seialized & the data is passed back as part of response body. 
+	- When the AJAX code is run, the data in form is serialized & the data is passed back as part of response body. 
 	```
 	name=printer&type=Equipment&cost=100&unitOfMeasure=Piece&indicators=Requires+Approval&_indicators=on&notes=This+printer+needs+special+approval
 	```
-	This annotation allows us to save the data, recieved as JSON, into a Java Object.
+	- This annotation allows us to save the data, recieved as JSON, into a Java Object.
+
 
 
 ## [8] Validation and Exception Handling
+- [1] Validation and Exception Handling Chapter Overview
 - [2,3] Validators
 	- `ProjectValidator` contains the rules of validation
 	- `ProjectController > initBinder` adds special beans like formating, validator
@@ -342,7 +350,9 @@
 	}
 	```
 
+
 ## [9] View Resolution
+- [1] Validation and Exception Handling Chapter Overview
 - [2] Chaining View Resolvers
 	- `WebConfiguration` is needed for accessing the properties (mappings) set in `views.properties`
 	- `other_home.jsp`  is the new page will be shown instead of `home.jsp`
@@ -378,7 +388,9 @@
 	- Also `MainController > goHomeAgain` needs to be changed. It won't recieve the `param` anymore, bbut accepts `@ModelAttribute("project") Project project` in the argument. 
 	- Temporarily `MainController > greeting` is disabled. Because in this case there 2 methods with equal paths.
 
+
 ## [10] Advanced Components
+- [1] Advanced Components Chapter Overview
 - [2] Handler Interceptors
 	- It allows us to intercept if any action is taken place (even in specific path). So then specific actions can be done.
 	- `com.oreilly.mvc.interceptors.GlobalInterceptor` will handle when to intercept.
@@ -432,6 +444,7 @@
 ## [11] Security Features
 - [1] Security Features
 	- How to prevent [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) & [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks with Spring MVC
+- [2] Postman Installation
 - [3] Global CORS Configuration
 	- In `WebConfiguration` rules of accessing to the server's data must be defined:
 	```java
@@ -480,6 +493,7 @@
 
 
 ## [12] MVC Testing
+- [1] Spring MVC Testing
 - [2] Test Case Configuration
 	- Make sure the dependency `org.springframework.boot spring-boot-starter-test` is installed
 	- The class `com.oreilly.mvc.FullStackTests` holds the test
@@ -509,8 +523,14 @@
 	> Using this annotation will disable full auto-configuration and instead apply only configuration relevant to MVC tests (i.e. @Controller, @ControllerAdvice, @JsonComponent Filter, WebMvcConfigurer and HandlerMethodArgumentResolver beans but not @Component, @Service or @Repository beans). [...] If you are looking to load your full application configuration and use MockMVC, you should consider @SpringBootTest combined with @AutoConfigureMockMvc rather than this annotation.
 	- But notice, in this way it is necessary to mention the controllers involved in the test
 	- ❌ I don't know why there is this error:
-	```Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.oreilly.mvc.data.services.ResourceService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	```
+	Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.oreilly.mvc.data.services.ResourceService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	```
+
+## [13] Async and Streaming 
+- [1] Async and Streaming Chapter Overview
+- [2] Async with DeferredResults
+	- The link `Get Price` in `resource_add`, will send a request to `ResourceController > getPricing` method. This method won't answer at the time, but by doing the process in a seperate thread, when the price is ready, it will respond as `@ResponseBody`, directly, to the field `cost`.
 
 
 ## Extra

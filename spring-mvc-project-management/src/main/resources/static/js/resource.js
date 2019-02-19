@@ -8,4 +8,14 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	
+	$("#pricing-link").click(function(e){
+		e.preventDefault();
+		
+		$.get(ctx + "/resource/pricing", function(data){
+			$("#cost").val(data);
+		});
+		return false;
+	});
+	
 });
