@@ -548,6 +548,12 @@
 	```
 	
 
+## [14] Spring Web Services
+- [1] Spring Web Services Chapter Overview
+- [2] Building an XSD
+	- We need the structure of requests & responses. So by `Bid.xml` is a sample which follows the structure designed in `Bids.xsd`. 
+
+
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.oreilly.org/Bids"
+	xmlns:tns="http://www.oreilly.org/Bids" elementFormDefault="qualified">
+
+	<element name="BidRequest">
+		<complexType>
+			<sequence>
+				<element name="projectName" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="BidResponse">
+		<complexType>
+			<sequence>
+				<element name="projectName" type="tns:Bid"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="Bid">
+		<sequence>
+			<element name="Quote" type="decimal" />
+			<element name="ValidToDate" type="date" />
+		</sequence>
+	</complexType>
+
+
+
+</schema>
