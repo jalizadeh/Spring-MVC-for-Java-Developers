@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Callable;
 
 import javax.validation.Valid;
 
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.mvc.data.entities.Resource;
@@ -139,30 +139,16 @@ public class ResourceController {
 	
 	@ResponseBody
 	@RequestMapping("/pricing")
-	public DeferredResult<String> getPricing(){
-		System.out.println("getPricing started...");
-		DeferredResult<String> deferredResult = new DeferredResult<>();
-		
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				System.out.println("runnable started...");
-				
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				
-				//create a random integer
-				deferredResult.setResult(String.valueOf(new Random().nextInt(1000) + 1));
-				
-				System.out.println("runnable finished...");
-			}
-		});
-		
+	public Callable<String> getPricing(){
+		System.out.println("getPricing started...");		
 		System.out.println("getPricing finished...");
-		return deferredResult;
+		
+		return new Callable<String>() {
+			@Override
+			public String call() throws Exception {				
+				System.out.println("callable started...");
+				return String.valueOf(new Random().nextInt(1000) + 1);
+			}
+		};
  	}
 }
