@@ -531,6 +531,13 @@
 - [1] Async and Streaming Chapter Overview
 - [2] Async with DeferredResults
 	- The link `Get Price` in `resource_add`, will send a request to `ResourceController > getPricing` method. This method won't answer at the time, but by doing the process in a seperate thread, when the price is ready, it will respond as `@ResponseBody`, directly, to the field `cost`.
+	- ❌ I don't know why it is not working.
+- [3] Async with Callables
+	- This interface is like `DeferredResults`, but with the difference that it handles the thread himself, so there is no need to create & run the thread myself. It needs only the logic.
+- [4] Streaming with ResponseBodyEmitter
+	- How about sending a stream of data as `@ResponseBody`. `ResponseBodyEmitter` can `send` a set of data, as many as needed, as long it is explicitly `completed`.
+	- - ❌ I don't know why it is not working as mentioned in the tutorial. The data is sent at once, not one by one.
+	
 
 
 ## Extra
