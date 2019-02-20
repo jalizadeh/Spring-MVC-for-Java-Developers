@@ -552,7 +552,10 @@
 - [1] Spring Web Services Chapter Overview
 - [2] Building an XSD
 	- We need the structure of requests & responses. So by `Bid.xml` is a sample which follows the structure designed in `Bids.xsd`. 
-
+- [3] Class Generation from XSD
+	- Installing the plugin via `Pom.xml` and it's configuration
+	- NOTE:
+		- `Workspace` must be set to `jdkXXX`, otherwise there will be errors 
 
 
 ## Extra
