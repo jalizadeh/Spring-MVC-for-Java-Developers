@@ -537,6 +537,15 @@
 - [4] Streaming with ResponseBodyEmitter
 	- How about sending a stream of data as `@ResponseBody`. `ResponseBodyEmitter` can `send` a set of data, as many as needed, as long it is explicitly `completed`.
 	- - ❌ I don't know why it is not working as mentioned in the tutorial. The data is sent at once, not one by one.
+- [5] Streaming with Server-Sent Events
+	- If server need to push notifications, or any other data to the client, `SseEmitter` can be used which is a specialization of `ResponseBodyEmitter` for sending [Server-Sent Events](http://www.w3.org/TR/eventsource/).
+	- With this method, the previous AJAX code must be changed to:
+	```ajax
+	var sse = new EventSource("/app/resource/pricing");
+	sse.onmessage = function(event){
+		$("#cost").val(event.data);
+	};
+	```
 	
 
 

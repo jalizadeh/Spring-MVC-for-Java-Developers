@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.oreilly.mvc.data.entities.Resource;
 import com.oreilly.mvc.data.services.ResourceService;
@@ -139,6 +140,7 @@ public class ResourceController {
 	}
 	
 	
+	/*
 	@ResponseBody
 	@RequestMapping("/pricing")
 	public Callable<String> getPricing(){
@@ -153,7 +155,7 @@ public class ResourceController {
 			}
 		};
  	}
-	
+	*/
 	
 	@ResponseBody
 	@RequestMapping("/stream")
@@ -161,13 +163,36 @@ public class ResourceController {
 		ResponseBodyEmitter emitter = new ResponseBodyEmitter();
 		
 		new Thread(new Runnable() {
-			
 			@Override
 			public void run() {
 				for(int i=0; i<20; i++) {
 					try {
 						emitter.send(new Random().nextInt(10));
 						Thread.sleep(100);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				emitter.complete();
+			}
+		}).start();
+		
+		return emitter;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/pricing")
+	public SseEmitter getPricing() {
+		SseEmitter emitter = new SseEmitter();
+		
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(int i=0; i<20; i++) {
+					try {
+						//emitter.send(new Random().nextInt(10));
+						emitter.send(i);
+						Thread.sleep(500);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

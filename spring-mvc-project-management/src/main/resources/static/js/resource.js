@@ -12,9 +12,17 @@ $(document).ready(function(){
 	$("#pricing-link").click(function(e){
 		e.preventDefault();
 		
+		var sse = new EventSource("/app/resource/pricing");
+		sse.onmessage = function(event){
+			$("#cost").val(event.data);
+		};
+		
+		/*
 		$.get(ctx + "/resource/pricing", function(data){
 			$("#cost").val(data);
 		});
+		*/
+		
 		return false;
 	});
 	
