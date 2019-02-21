@@ -14,7 +14,7 @@
 	<element name="BidResponse">
 		<complexType>
 			<sequence>
-				<element name="projectName" type="tns:Bid"/>
+				<element name="bid" type="tns:Bid"/>
 			</sequence>
 		</complexType>
 	</element>

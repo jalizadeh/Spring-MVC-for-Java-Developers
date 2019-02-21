@@ -556,11 +556,44 @@
 	- Installing the plugin via `Pom.xml` and it's configuration
 	- NOTE:
 		- `Workspace` must be set to `jdkXXX`, otherwise there will be errors 
+		- In `Goals` add `clean package`, then run.
 - [4] Service Configuration
 	- Our web service provides some services which can be presented by [WSDL](https://en.wikipedia.org/wiki/Web_Services_Description_Language).
 	- Dependency `wsdl4j` handles management of `bids.wsdl` file
 	- `bids.wsdl` is built upon our configuration in `WebserviceConfigurer`
 	- ▶ Go to: `http://localhost:8080/ws/bids.wsdl`
+- [5] Endpoints
+	- `Endpoint` is like a `Controller` for handling `requests`, however it is only used for `web service requests`.
+	- Recieved request:
+	```xml
+	<!-- POST [XML(text/xml)] : http://localhost:8080/ws -->
+	<soapenv:Envelope 
+		xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+		xmlns:ws="http://www.oreilly.org/Bids">
+		<soapenv:Header/>
+		<soapenv:Body>
+			<ws:BidRequest>
+				<ws:projectName>Really hard project</ws:projectName>
+			</ws:BidRequest>	
+		</soapenv:Body>
+	</soapenv:Envelope>
+	```
+	- Response:
+	```xml
+	<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:BidResponse xmlns:ns2="http://www.oreilly.org/Bids">
+            <ns2:bid>
+                <ns2:Quote>1000</ns2:Quote>
+                <ns2:ValidToDate/>
+            </ns2:bid>
+        </ns2:BidResponse>
+    </SOAP-ENV:Body>
+	</SOAP-ENV:Envelope>
+	```
+
+
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
