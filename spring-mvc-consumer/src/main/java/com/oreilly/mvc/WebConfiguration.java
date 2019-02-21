@@ -17,7 +17,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public Jaxb2Marshaller marshaller() {
-		
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		marshaller.setContextPath("com.oreilly.ws.generated");
 		return marshaller;

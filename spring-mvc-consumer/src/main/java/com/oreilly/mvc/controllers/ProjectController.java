@@ -27,6 +27,15 @@ import com.oreilly.ws.generated.BidResponse;
 public class ProjectController {
 
 	@Autowired
+	public BidClient client;
+	
+	@ResponseBody
+	@RequestMapping("/bid")
+	public BidResponse getBid() {
+		return client.getBid("simple project - ProjectController");
+	}
+	
+	@Autowired
 	public ProjectService projectService;
 	
 	@RequestMapping(value="/{projectId}")

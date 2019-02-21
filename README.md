@@ -595,6 +595,10 @@
 - [6] Consumer Configuration
 	- A client with the appropriate `pom.xml` configuration, can generate the needed classes via `wsdl` defined by the server.
 	- Project `spring-mvc-consumer` is the client.
+- [7] WebServiceTemplate
+	- This shows a full function of sending the request to the server on port 8081, and recieving back the response on at the client side on port 8080.
+	- Run both server (spring-web-service) and client (spring-mvc-consumer)
+	- ▶ Go to: `http://localhost:8080/app/project/bid`
 
 
 ## Extra
