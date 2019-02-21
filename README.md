@@ -592,7 +592,9 @@
     </SOAP-ENV:Body>
 	</SOAP-ENV:Envelope>
 	```
-
+- [6] Consumer Configuration
+	- A client with the appropriate `pom.xml` configuration, can generate the needed classes via `wsdl` defined by the server.
+	- Project `spring-mvc-consumer` is the client.
 
 
 ## Extra
