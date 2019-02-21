@@ -17,7 +17,7 @@
 - [3] Project `Spring MVC Foundation` is configured
 - [4] Logging dependencies added
 - [5] `AppInitializer` & `WebConfig` is done.
-	- Go to `http://localhost:8080/spring-mvc-foundation/main/` to see the message. The 1st webapp is done :)
+	- ▶ Go to `http://localhost:8080/spring-mvc-foundation/main/` to see the message. The 1st webapp is done :)
 - [6] `DispatcherInitializer` is used instead of `AppInitializer`
 	- It is faster to configure & needs less to code
 - [7] Context Heirarchies
@@ -75,10 +75,10 @@
 ## [5] Basic Request Processing
 - [1] Request Processing Overview
 - [2] Project `spring-mvc-project-management` setup is done.
-	- Go to `http://localhost:8080/home/`
+	- ▶ Go to `http://localhost:8080/home/`
 - [3] Handling Requests with Controllers
 	- `ProjectController` implemented
-	- Go to `http://localhost:8080/project/add`
+	- ▶ Go to `http://localhost:8080/project/add`
 - [4] Establishing Request Mappings
 	- Different type of parameters in `POST` can be handled by mixing them
 	- `project_add.jsp` changed
@@ -134,7 +134,7 @@
 	- `resource_add.jsp` added
 	- Menu link to `Resource > add` updated
 	- `application.properties` updated
-	- Go to `http://localhost:8080/app/home/`
+	- ▶ Go to `http://localhost:8080/app/home/`
 - [3] Form Tag
 	- Instead of `HTML form`, we can use `Spring MVC Form` which has more parameters to config & some other rules to obey
 		- Define by:
@@ -361,7 +361,7 @@
 	- `ProjectController > findProjectObject` will return the data object in path `/api/{id}`
 	- `WebMvcConfigurerAdapter` is [deprecated](https://stackoverflow.com/questions/47552835/the-type-webmvcconfigureradapter-is-deprecated), so I used `WebMvcConfigurer`
 	- ❌ I couldn't present data as JSON, as mentioned in tutorial
-	- Go to `http://localhost:8080/app/project/api/{projectId}`
+	- ▶ Go to `http://localhost:8080/app/project/api/{projectId}`
 - [4] Redirects
 	- When a form is submitted, if the user refreshes the (redirected) page, it will ask for resending the submitted form data, to the server again. To prevent this, after form validation, it should be "redirected" to the desired page by using `redirect:` term before the page's path. It can be any path:
 	```java
@@ -536,11 +536,11 @@
 	- This interface is like `DeferredResults`, but with the difference that it handles the thread himself, so there is no need to create & run the thread myself. It needs only the logic.
 - [4] Streaming with ResponseBodyEmitter
 	- How about sending a stream of data as `@ResponseBody`. `ResponseBodyEmitter` can `send` a set of data, as many as needed, as long it is explicitly `completed`.
-	- - ❌ I don't know why it is not working as mentioned in the tutorial. The data is sent at once, not one by one.
+	- ❌ I don't know why it is not working as mentioned in the tutorial. The data is sent at once, not one by one.
 - [5] Streaming with Server-Sent Events
 	- If server need to push notifications, or any other data to the client, `SseEmitter` can be used which is a specialization of `ResponseBodyEmitter` for sending [Server-Sent Events](http://www.w3.org/TR/eventsource/).
 	- With this method, the previous AJAX code must be changed to:
-	```ajax
+	```js
 	var sse = new EventSource("/app/resource/pricing");
 	sse.onmessage = function(event){
 		$("#cost").val(event.data);
@@ -556,7 +556,11 @@
 	- Installing the plugin via `Pom.xml` and it's configuration
 	- NOTE:
 		- `Workspace` must be set to `jdkXXX`, otherwise there will be errors 
-
+- [4] Service Configuration
+	- Our web service provides some services which can be presented by [WSDL](https://en.wikipedia.org/wiki/Web_Services_Description_Language).
+	- Dependency `wsdl4j` handles management of `bids.wsdl` file
+	- `bids.wsdl` is built upon our configuration in `WebserviceConfigurer`
+	- ▶ Go to: `http://localhost:8080/ws/bids.wsdl`
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
