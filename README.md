@@ -608,7 +608,13 @@
 - [4] Project Reactor Basics
 	- Three tests will demonstrate some aspects.
 	- `src/test/java/com.oreilly.reactive.SpringReactiveDemoApplicationTests`
-- [5] 
+- [5] Mono
+	- It is a reactive type that represents s single or empty result. It is a special implementation of `publisher` that emits only one item.
+	- ▶ Go to: `http://localhost:8080/project/Software`
+	```json
+	{"name":"Software","estimatedHour":406}
+	```
+
 
 ## Extra
 - [How to define multiple validations](https://stackoverflow.com/questions/14533488/adding-multiple-validators-using-initbinder/44540447)
