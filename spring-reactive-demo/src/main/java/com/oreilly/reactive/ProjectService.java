@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -34,5 +35,15 @@ public class ProjectService {
 				.filter(project -> {
 					return name.equalsIgnoreCase(project.getName());
 				}).findFirst().get());
+	}
+	
+	
+	public Flux<ProjectStatus> getStatus(String name){
+		String[] statusTypes = new String[] {"Started", "In Progress", "Completed"};
+		
+		return Flux.fromStream( Stream.generate( () -> new ProjectStatus(name, null)))
+					.doOnEach(s -> { 
+						s.get().setStatus(statusTypes[new Random().nextInt(3)]); 
+					});
 	}
 }

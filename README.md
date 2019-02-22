@@ -614,6 +614,10 @@
 	```json
 	{"name":"Software","estimatedHour":406}
 	```
+- [6] Flux
+	- It is like `Mono`, but can emit zero or more elements.
+	- `ProjectStatus` is the object is filled with random `status` and is produced as `event` each second.
+
 
 
 ## Extra
