@@ -617,6 +617,8 @@
 - [6] Flux
 	- It is like `Mono`, but can emit zero or more elements.
 	- `ProjectStatus` is the object is filled with random `status` and is produced as `event` each second.
+- [7] RouterFunction
+	- Exposes routing functionality, such as to create a `RouterFunctio`n using a discoverable builder-style API, to create a `RouterFunction` given a `RequestPredicate` and `HandlerFunction`, and to do further subrouting on an existing routing function. Additionally, this class can transform a `RouterFunction` into an `HttpHandler`, which can be run in `Servlet` 3.1+, `Reactor`, or `Undertow`.
 
 
 
