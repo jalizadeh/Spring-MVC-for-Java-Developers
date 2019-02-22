@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Controller
-@RequestMapping("/project")
+//commented to remove conflict with SpringReactiveDemoApplication > routes 
+//@Controller
+//@RequestMapping("/project")
 public class ProjectController {
 	
 	@Autowired

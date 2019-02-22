@@ -14,9 +14,12 @@ import static org.springframework.web.reactive.function.BodyInserters.fromObject
 public class SpringReactiveDemoApplication {
 
 	@Bean
-	RouterFunction<?> routes(){
-		return RouterFunctions.route(GET("/hello"), 
-				serverRequest -> ServerResponse.ok().body(fromObject("Hello World")));
+	RouterFunction<?> routes(ProjectHandler handler){
+		return RouterFunctions
+				.route(GET("/hello"), 
+					serverRequest -> ServerResponse.ok().body(fromObject("Hello World")))
+				.andRoute(GET("/project/{name}"), 
+					handler::findProject);
 	}
 	
 	public static void main(String[] args) {
